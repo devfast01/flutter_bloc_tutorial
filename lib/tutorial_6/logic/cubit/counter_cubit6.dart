@@ -5,8 +5,6 @@ import 'package:flutter_block_tutorials/tutorial_6/constants/internet_enum.dart'
 import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/counter_state6.dart';
 import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/internet_cubit.dart';
 import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/internet_state.dart';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterCubit extends Cubit<CounterState> {
