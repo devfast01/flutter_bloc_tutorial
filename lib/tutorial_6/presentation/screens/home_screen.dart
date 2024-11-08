@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_block_tutorials/tutorial_6/constants/internet_enum.dart';
 import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/counter_cubit6.dart';
 import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/counter_state6.dart';
-import 'package:flutter_block_tutorials/tutorial_6/presentation/screens/second_screen.dart';
+import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/internet_cubit.dart';
+import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/internet_state.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
@@ -28,6 +30,35 @@ class HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            BlocBuilder<InternetCubit, InternetState>(
+              builder: (context, state) {
+                if (state is InternetConnected &&
+                    state.connectionType == ConnectionType.Wifi) {
+                  return Text(
+                    'Wi-Fi',
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                          color: Colors.green,
+                        ),
+                  );
+                } else if (state is InternetConnected &&
+                    state.connectionType == ConnectionType.Mobile) {
+                  return Text(
+                    'Mobile',
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                          color: Colors.red,
+                        ),
+                  );
+                } else if (state is InternetDisconnected) {
+                  return Text(
+                    'Disconnected',
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                          color: Colors.grey,
+                        ),
+                  );
+                }
+                return CircularProgressIndicator();
+              },
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
@@ -119,7 +150,7 @@ class HomeScreenState extends State<HomeScreen> {
                 selectionColor: widget.color,
               ),
             ),
-             const SizedBox(
+            const SizedBox(
               height: 24,
             ),
             ElevatedButton(

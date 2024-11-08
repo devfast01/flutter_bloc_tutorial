@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/counter_cubit6.dart';
 import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/counter_state6.dart';
-import 'package:flutter_block_tutorials/tutorial_6/presentation/screens/third_screen.dart';
 
 // ignore: must_be_immutable
 class SecondScreen extends StatefulWidget {
