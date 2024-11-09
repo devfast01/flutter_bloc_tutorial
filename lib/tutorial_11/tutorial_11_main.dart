@@ -2,10 +2,12 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/internet_cubit.dart';
-import 'package:flutter_block_tutorials/tutorial_6/logic/cubit/settings_cubit.dart';
-import 'package:flutter_block_tutorials/tutorial_6/presentation/router/app_router.dart';
-import 'logic/cubit/counter_cubit6.dart';
+import 'package:flutter_block_tutorials/tutorial_11/logic/cubit/internet_cubit11.dart';
+import 'package:flutter_block_tutorials/tutorial_11/logic/cubit/settings_cubit11.dart';
+import 'package:flutter_block_tutorials/tutorial_11/presentation/router/app_router.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'logic/cubit/counter_cubit11.dart';
+import 'package:path_provider/path_provider.dart';
 
 // ? bu yerde Equatable librarynyn ulanylysy bar
 // ? Equatable libraryny ayryp barlar gor sonda tapawudy cykyar
@@ -36,19 +38,23 @@ void main() async {
 
   // debugPrint('a == a ${a == a}');
   // debugPrint('b == b ${b == b}');
+  WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
 
-  runApp(Tutorial_6(
+  runApp(Tutorial_11(
     appRouter: AppRouter(),
     connectivity: Connectivity(),
   ));
 }
 
 // ignore: camel_case_types
-class Tutorial_6 extends StatelessWidget {
+class Tutorial_11 extends StatelessWidget {
   final AppRouter appRouter;
   final Connectivity connectivity;
 
-  const Tutorial_6({
+  const Tutorial_11({
     Key? key,
     required this.appRouter,
     required this.connectivity,
@@ -74,6 +80,7 @@ class Tutorial_6 extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
+        initialRoute: '/',
         onGenerateRoute: appRouter.onGenerateRoute,
       ),
     );
