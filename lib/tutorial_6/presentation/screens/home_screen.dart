@@ -35,6 +35,11 @@ class HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           backgroundColor: widget.color,
           title: Text(widget.title),
+          actions: [
+            IconButton(
+                icon: const Icon(Icons.settings),
+                onPressed: () => Navigator.pushNamed(context, '/settings')),
+          ],
         ),
         body: Center(
           child: Column(
@@ -66,7 +71,7 @@ class HomeScreenState extends State<HomeScreen> {
                           ),
                     );
                   }
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 },
               ),
               const Text(
@@ -121,6 +126,47 @@ class HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 height: 24,
               ),
+              Builder(
+                builder: (context) {
+                  final counterState = context.watch<CounterCubit>().state;
+                  final internetState = context.watch<InternetCubit>().state;
+
+                  if (internetState is InternetConnected &&
+                      internetState.connectionType == ConnectionType.Mobile) {
+                    return Text(
+                      'Counter: ${counterState.counterValue} Internet: Mobile',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    );
+                  } else if (internetState is InternetConnected &&
+                      internetState.connectionType == ConnectionType.Wifi) {
+                    return Text(
+                      'Counter: ${counterState.counterValue} Internet: Wifi',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    );
+                  } else {
+                    return Text(
+                      'Counter: ${counterState.counterValue} Internet: Disconnected',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    );
+                  }
+                },
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Builder(
+                builder: (context) {
+                  final counterValue = context
+                      .select((CounterCubit cubit) => cubit.state.counterValue);
+                  return Text(
+                    'Counter: $counterValue',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  );
+                },
+              ),
+              const SizedBox(
+                height: 24,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -152,8 +198,8 @@ class HomeScreenState extends State<HomeScreen> {
                   Navigator.of(context).pushNamed('/second');
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Background color
-                  onPrimary: Colors.white, // Text color
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.blue, // Text color
                 ),
                 child: Text(
                   "Go to second screen",
@@ -168,8 +214,8 @@ class HomeScreenState extends State<HomeScreen> {
                   Navigator.of(context).pushNamed('/third');
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue, // Background color
-                  onPrimary: Colors.white, // Text color
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.blue, // Text color
                 ),
                 child: Text(
                   "Go to third screen",
