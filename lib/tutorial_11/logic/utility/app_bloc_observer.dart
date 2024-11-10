@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_block_tutorials/main.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
-    print(change);
+    greenLog("onChanged $change");
     super.onChange(bloc, change);
   }
 
@@ -15,7 +16,7 @@ class AppBlocObserver extends BlocObserver {
 
   @override
   void onCreate(BlocBase bloc) {
-    print(bloc);
+    greenLog("onCreate $bloc");
     super.onCreate(bloc);
   }
 

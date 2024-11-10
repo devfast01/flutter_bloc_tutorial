@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_block_tutorials/tutorial_11/logic/cubit/internet_cubit11.dart';
 import 'package:flutter_block_tutorials/tutorial_11/logic/cubit/settings_cubit11.dart';
+import 'package:flutter_block_tutorials/tutorial_11/logic/utility/app_bloc_observer.dart';
 import 'package:flutter_block_tutorials/tutorial_11/presentation/router/app_router.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'logic/cubit/counter_cubit11.dart';
@@ -44,6 +45,8 @@ void main() async {
     storageDirectory: await getApplicationDocumentsDirectory(),
   );
 
+  Bloc.observer = AppBlocObserver();
+
   runApp(Tutorial_11(
     appRouter: AppRouter(),
     connectivity: Connectivity(),
@@ -63,7 +66,7 @@ class Tutorial_11 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiBlocProvider( 
       providers: [
         BlocProvider<InternetCubit>(
           create: (context) => InternetCubit(connectivity: connectivity),
@@ -73,6 +76,7 @@ class Tutorial_11 extends StatelessWidget {
         ),
         BlocProvider<SettingsCubit>(
           create: (context) => SettingsCubit(),
+          lazy: false,
         ),
       ],
       child: MaterialApp(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_block_tutorials/main.dart';
 import 'package:flutter_block_tutorials/tutorial_11/constants/internet_enum.dart';
 import 'package:flutter_block_tutorials/tutorial_11/logic/cubit/counter_cubit11.dart';
 import 'package:flutter_block_tutorials/tutorial_11/logic/cubit/counter_state11.dart';
@@ -40,9 +41,13 @@ class HomeScreen11State extends State<HomeScreen11> {
                 if (state is InternetConnected &&
                     state.connectionType == ConnectionType.Wifi) {
                   context.read<CounterCubit>().increment();
+                  greenLog('wifi');
                 } else if (state is InternetConnected &&
                     state.connectionType == ConnectionType.Mobile) {
                   context.read<CounterCubit>().decrement();
+                  greenLog('mobile');
+                } else if (state is InternetDisconnected) {
+                  greenLog('disconnected');
                 }
               },
               builder: (context, state) {

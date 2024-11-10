@@ -26,4 +26,8 @@ class SettingsState extends Equatable {
         emailNotifications,
         appNotifications,
       ];
+
+  @override
+  String toString() =>
+      'SettingsState(appNotifications: $appNotifications, emailNotifications: $emailNotifications)';
 }
