@@ -38,6 +38,7 @@ void main() async {
 
   // debugPrint('a == a ${a == a}');
   // debugPrint('b == b ${b == b}');
+
   WidgetsFlutterBinding.ensureInitialized();
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: await getApplicationDocumentsDirectory(),

@@ -35,7 +35,16 @@ class HomeScreen11State extends State<HomeScreen11> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            BlocBuilder<InternetCubit, InternetState>(
+            BlocConsumer<InternetCubit, InternetState>(
+              listener: (context, state) {
+                if (state is InternetConnected &&
+                    state.connectionType == ConnectionType.Wifi) {
+                  context.read<CounterCubit>().increment();
+                } else if (state is InternetConnected &&
+                    state.connectionType == ConnectionType.Mobile) {
+                  context.read<CounterCubit>().decrement();
+                }
+              },
               builder: (context, state) {
                 if (state is InternetConnected &&
                     state.connectionType == ConnectionType.Wifi) {
@@ -120,7 +129,7 @@ class HomeScreen11State extends State<HomeScreen11> {
               builder: (context) {
                 final counterState = context.watch<CounterCubit>().state;
                 final internetState = context.watch<InternetCubit>().state;
-    
+
                 if (internetState is InternetConnected &&
                     internetState.connectionType == ConnectionType.Mobile) {
                   return Text(
