@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_block_tutorials/bloc_with_post_request/bloc/restaurant_bloc.dart';
-import 'package:flutter_block_tutorials/bloc_with_post_request/bloc/restaurant_event.dart';
-import 'package:flutter_block_tutorials/bloc_with_post_request/bloc/restaurant_state.dart';
-import 'package:flutter_block_tutorials/bloc_with_post_request/data/model/api_result_model.dart';
+import 'package:flutter_block_tutorials/bloc_with_get_request/bloc/restaurant_bloc.dart';
+import 'package:flutter_block_tutorials/bloc_with_get_request/bloc/restaurant_event.dart';
+import 'package:flutter_block_tutorials/bloc_with_get_request/bloc/restaurant_state.dart';
+import 'package:flutter_block_tutorials/bloc_with_get_request/data/model/api_result_model.dart';
 // own import
 import 'about_page.dart';
 

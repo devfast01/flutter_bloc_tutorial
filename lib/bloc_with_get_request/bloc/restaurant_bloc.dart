@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_block_tutorials/bloc_with_post_request/data/model/api_result_model.dart';
-import 'package:flutter_block_tutorials/bloc_with_post_request/data/repository/restaurant_repository.dart';
+import 'package:flutter_block_tutorials/bloc_with_get_request/data/model/api_result_model.dart';
+import 'package:flutter_block_tutorials/bloc_with_get_request/data/repository/restaurant_repository.dart';
 
 import 'restaurant_event.dart';
 import 'restaurant_state.dart';

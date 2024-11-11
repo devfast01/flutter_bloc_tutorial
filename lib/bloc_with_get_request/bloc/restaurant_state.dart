@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_block_tutorials/bloc_with_post_request/data/model/api_result_model.dart';
+import 'package:flutter_block_tutorials/bloc_with_get_request/data/model/api_result_model.dart';
 
 abstract class RestaurantState extends Equatable {
   @override
