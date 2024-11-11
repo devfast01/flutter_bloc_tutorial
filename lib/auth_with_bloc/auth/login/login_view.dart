@@ -10,6 +10,8 @@ import 'package:flutter_block_tutorials/auth_with_bloc/auth/login/login_state.da
 class LoginView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
+  LoginView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +42,7 @@ class LoginView extends StatelessWidget {
         child: Form(
           key: _formKey,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -56,7 +58,7 @@ class LoginView extends StatelessWidget {
   Widget _usernameField() {
     return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
       return TextFormField(
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           icon: Icon(Icons.person),
           hintText: 'Username',
         ),
@@ -73,7 +75,7 @@ class LoginView extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
       return TextFormField(
         obscureText: true,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           icon: Icon(Icons.security),
           hintText: 'Password',
         ),
@@ -89,14 +91,14 @@ class LoginView extends StatelessWidget {
   Widget _loginButton() {
     return BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
       return state.formStatus is FormSubmitting
-          ? CircularProgressIndicator()
+          ? const CircularProgressIndicator()
           : ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   context.read<LoginBloc>().add(LoginSubmitted());
                 }
               },
-              child: Text('Login'),
+              child: const Text('Login'),
             );
     });
   }

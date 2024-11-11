@@ -5,7 +5,7 @@ class LoginState {
   bool get isValidUsername => username.length > 3;
 
   final String password;
-  bool get isValidPassword => password.length > 6;
+  bool get isValidPassword => password.length > 2;
 
   final FormSubmissionStatus formStatus;
 
