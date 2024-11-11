@@ -22,9 +22,12 @@ class LoginViewLast extends StatelessWidget {
         create: (context) => LoginBlocLast(loginRepository: loginRepository),
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 20.0), // Add padding at the bottom
+            padding: const EdgeInsets.only(
+                bottom: 20.0), // Add padding at the bottom
             child: Column(
               children: [
+                const SizedBox(height: 50), // Add spacing at the top
+                _loginDetails(),
                 _loginForm(),
               ],
             ),
@@ -35,22 +38,17 @@ class LoginViewLast extends StatelessWidget {
   }
 
   Widget _loginForm() {
-    return BlocListener<LoginBlocLast, LoginStateLast>(
-      listener: (context, state) {},
-      child: Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(height: 50), // Add spacing at the top
-              _loginDetails(),
-              _usernameField(),
-              _passwordField(),
-              _loginButton(),
-            ],
-          ),
+    return Form(
+      key: _formKey,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            _usernameField(),
+            _passwordField(),
+            _loginButton(),
+          ],
         ),
       ),
     );
@@ -61,7 +59,8 @@ class LoginViewLast extends StatelessWidget {
       builder: (context, state) {
         if (state is LoginSuccessState) {
           return Container(
-            margin: const EdgeInsets.only(top: 50, bottom: 50), // Adjust margins
+            margin:
+                const EdgeInsets.only(top: 50, bottom: 50), // Adjust margins
             child: Column(
               children: [
                 Text(
@@ -170,8 +169,8 @@ class LoginViewLast extends StatelessWidget {
               final username = _usernameController.text.trim();
               final password = _passwordController.text.trim();
               context.read<LoginBlocLast>().add(
-                LoginRequested(username: username, password: password),
-              );
+                    LoginRequested(username: username, password: password),
+                  );
             },
             child: const Text('Login'),
           ),
