@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_block_tutorials/block_with_api/features/posts/bloc/posts_bloc.dart';
+import 'package:flutter_block_tutorials/bloc_with_api/features/posts/bloc/posts_bloc.dart';
 
 class PostsPage extends StatefulWidget {
   const PostsPage({super.key});

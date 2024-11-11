@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:flutter_block_tutorials/block_with_api/features/posts/models/post_data_ui_model.dart';
+import 'package:flutter_block_tutorials/bloc_with_api/features/posts/models/post_data_ui_model.dart';
 import 'package:http/http.dart' as http;
 
 class PostsRepo {

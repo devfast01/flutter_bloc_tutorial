@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_block_tutorials/block_with_api/features/posts/ui/posts_page.dart';
+import 'package:flutter_block_tutorials/bloc_with_api/features/posts/ui/posts_page.dart';
 
 void main() async {
   runApp(const MyApp());
