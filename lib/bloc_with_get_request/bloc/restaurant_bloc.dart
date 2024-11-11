@@ -13,6 +13,7 @@ class RestaurantBloc extends Bloc<RestaurantEvent, RestaurantState> {
 
   RestaurantState get initialState => RestaurantLoadingState();
 
+  @override
   Stream<RestaurantState> mapEventToState(RestaurantEvent event) async* {
     if (event is FetchRestaurantEvent) {
       yield RestaurantLoadingState();
